@@ -58,7 +58,7 @@ export const useRegRedir = ({ text = '' }) => {
     let utmContentValues = matches.map((match) => {
       let matchWithoutPrefix2 = match.replace('utm', '');
 
-      return decodeURIComponent(matchWithoutPrefix2);
+      return matchWithoutPrefix2.slice(0,100);
     });
 
     setMatches([...new Set(utmContentValues)]);
