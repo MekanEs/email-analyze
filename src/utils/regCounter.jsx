@@ -50,13 +50,13 @@ export const useRegCampaign = ({ text = '' }) => {
 export const useRegRedir = ({ text = '' }) => {
   const [matches, setMatches] = useState([]);
   useEffect(() => {
-    const regex = /redirect_url=(.*?)%3Futm/gm;
+    const regex = /redirect_url=(.*?)utm/gm;
     // Find matches
     let matches = text.match(regex) || [];
 
     // Extract the captured group (the utm_content value) from each match
     let utmContentValues = matches.map((match) => {
-      let matchWithoutPrefix2 = match.replace('%3Futm', '');
+      let matchWithoutPrefix2 = match.replace('utm', '');
 
       return decodeURIComponent(matchWithoutPrefix2);
     });
