@@ -43,7 +43,9 @@ const RegList = (props) => {
             background: regMatches[el] > 0 ? '#fc8989bf' : '#89fc8dbf',
             gap: '20px',
             justifyContent: 'center',
-            display: opened ? 'flex' : 'none',
+            display: 'flex',
+            maxHeight: opened ? '100%' : '0',
+            transition: 'height 0.3s ease',
             height: regMatches[el] > 0 ? '25px' : '12px',
           }}
           onClick={() => {
