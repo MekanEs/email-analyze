@@ -9,15 +9,15 @@ export const useRegContent = ({ text = '' }) => {
 
     let matches = text.match(regex) || [];
     let matches2 = text.match(regex2) || [];
-    console.log(matches);
+    console.log(matches,matches2);
     // Extract the captured group (the utm_content value) from each match
     let utmContentValues = matches.map((match) => {
       let matchWithoutPrefix = match.replace('utm_content%3D', '');
-      return matchWithoutPrefix;
+      return matchWithoutPrefix.split('"')[0];
     });
     let utmContentValues2 = matches2.map((match) => {
       let matchWithoutPrefix = match.replace('utm_content=', '');
-      return matchWithoutPrefix;
+      return matchWithoutPrefix.split('"')[0];
     });
     setMatches([...new Set([...utmContentValues, ...utmContentValues2])]);
   }, [text]);
