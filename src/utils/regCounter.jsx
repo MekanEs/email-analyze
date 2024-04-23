@@ -36,11 +36,11 @@ export const useRegCampaign = ({ text = '' }) => {
     // Extract the captured group (the utm_content value) from each match
     let utmContentValues = matches.map((match) => {
       let matchWithoutPrefix = match.replace('utm_campaign%3D', '');
-      return matchWithoutPrefix;
+      return matchWithoutPrefix.split('"')[0];
     });
     let utmContentValues2 = matches2.map((match) => {
       let matchWithoutPrefix = match.replace('utm_campaign=', '');
-      return matchWithoutPrefix;
+      return matchWithoutPrefix.split('"')[0];
     });
 
     setMatches([...new Set([...utmContentValues, ...utmContentValues2])]);
