@@ -13,11 +13,11 @@ export const useRegContent = ({ text = '' }) => {
     // Extract the captured group (the utm_content value) from each match
     let utmContentValues = matches.map((match) => {
       let matchWithoutPrefix = match.replace('utm_content%3D', '');
-      return decodeURIComponent(matchWithoutPrefix);
+      return matchWithoutPrefix;
     });
     let utmContentValues2 = matches2.map((match) => {
       let matchWithoutPrefix = match.replace('utm_content=', '');
-      return decodeURIComponent(matchWithoutPrefix);
+      return matchWithoutPrefix;
     });
     setMatches([...new Set([...utmContentValues, ...utmContentValues2])]);
   }, [text]);
@@ -36,11 +36,11 @@ export const useRegCampaign = ({ text = '' }) => {
     // Extract the captured group (the utm_content value) from each match
     let utmContentValues = matches.map((match) => {
       let matchWithoutPrefix = match.replace('utm_campaign%3D', '');
-      return decodeURIComponent(matchWithoutPrefix);
+      return matchWithoutPrefix;
     });
     let utmContentValues2 = matches2.map((match) => {
       let matchWithoutPrefix = match.replace('utm_campaign=', '');
-      return decodeURIComponent(matchWithoutPrefix);
+      return matchWithoutPrefix;
     });
 
     setMatches([...new Set([...utmContentValues, ...utmContentValues2])]);
@@ -51,6 +51,7 @@ export const useRegRedir = ({ text = '' }) => {
   const [matches, setMatches] = useState([]);
   useEffect(() => {
     const regex = /redirect_url=(.*?)utm/gm;
+    
     // Find matches
     let matches = text.match(regex) || [];
 
@@ -58,7 +59,7 @@ export const useRegRedir = ({ text = '' }) => {
     let utmContentValues = matches.map((match) => {
       let matchWithoutPrefix2 = match.replace('utm', '');
 
-      return matchWithoutPrefix2.slice(0,100);
+      return matchWithoutPrefix2.split('"')[0];
     });
 
     setMatches([...new Set(utmContentValues)]);
