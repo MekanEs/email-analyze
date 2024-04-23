@@ -22,8 +22,9 @@ const RegList = (props) => {
         borderColor: hasErr ? '#fc8989bf' : '#89fc8dbf',
         borderRadius: '10px',
         padding: '10px',
-        height: 'fit-content',
+        height:  'fit-content',
         minWidth: '100%',
+        transition: 'height 0.3s ease',
       }}
     >
       <h4
@@ -43,9 +44,9 @@ const RegList = (props) => {
             background: regMatches[el] > 0 ? '#fc8989bf' : '#89fc8dbf',
             gap: '20px',
             justifyContent: 'center',
-            display: 'flex',
-            maxHeight: opened ? '100%' : '0',
-            transition: 'height 0.3s ease',
+            display: opened? 'flex':'none',
+            
+            
             height: regMatches[el] > 0 ? '25px' : '12px',
           }}
           onClick={() => {
