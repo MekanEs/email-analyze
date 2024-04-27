@@ -47,7 +47,7 @@ const RegList = (props) => {
             display: opened? 'flex':'none',
             
             
-            height: regMatches[el] > 0 ? '25px' : '12px',
+            height: '25px'
           }}
           onClick={() => {
             navigator.clipboard.writeText(el.split('/')[1]);
@@ -56,11 +56,11 @@ const RegList = (props) => {
         >
           {el.split('/')[1] + ':' + regMatches[el]}
           <CopyIcon width='20px' />
-          {regMatches[el] > 0 ? (
+          
             <div className='quest' title={descriptions[i]}>
               ?
             </div>
-          ) : null}
+         
         </li>
       ))}
     </ul>
